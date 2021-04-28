@@ -1,1 +1,0 @@
-D:\NUnitTesting in dot net core\NUnitTests\NUnitTests>dotnet test /p:CollectCoverage=true /p:CoverletOutputFormat=cobertura
