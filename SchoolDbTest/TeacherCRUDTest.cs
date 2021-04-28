@@ -35,7 +35,7 @@ namespace SchoolDbTest
         public void GetAllTeacher_Test()
         {
             int count = TeacherCRUD.GetAllTeacher();
-            Assert.AreEqual(1, count);
+            Assert.That(count, Is.GreaterThan(0));
         }
         [Test]
         public void GetTeacherById_Test()

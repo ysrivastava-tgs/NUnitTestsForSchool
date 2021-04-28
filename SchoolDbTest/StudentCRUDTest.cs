@@ -33,7 +33,7 @@ namespace SchoolDbTest
         public void GetAllStudent_Test()
         {
             int count = StudentCRUD.GetAllStudent();
-            Assert.AreEqual(1, count);
+            Assert.That(count, Is.GreaterThan(0));
         }
         [Test]
         public void GetStudentById_Test()

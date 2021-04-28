@@ -34,7 +34,7 @@ namespace SchoolDbTest
         public void GetAllSubject_Test()
         {
             int count = SubjectCRUD.GetAllSubject();
-            Assert.AreEqual(1, count);
+            Assert.That(count, Is.GreaterThan(0));
         }
         [Test]
         public void GetSubjectById_Test()
