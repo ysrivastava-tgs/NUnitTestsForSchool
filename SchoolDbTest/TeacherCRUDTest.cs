@@ -23,5 +23,13 @@ namespace SchoolDbTest
             bool flag = TeacherCRUD.AddTeacher(teach);
             Assert.AreEqual(true, flag);
         }
+        [Test]
+        [TestCase("tbshfg676qe", ExpectedResult = true)]
+        public bool SubjectDel_Test(string id)
+        {
+
+            bool flag = TeacherCRUD.DeleteTeacher(id);
+            return flag;
+        }
     }
 }

@@ -34,5 +34,33 @@ namespace RainbowSchoolModels
                 return false;
             }
         }
+        public static bool DeleteTeacher(string id)
+        {
+            try
+            {
+                SqlCommand delete = new SqlCommand("delete from [Teacher] where teachId = @tId", con);
+                delete.Parameters.AddWithValue("@tId", id);
+                con.Open();
+                int res = delete.ExecuteNonQuery();
+                if (res > 0)
+                {
+                    con.Close();
+                    return true;
+                }
+                else
+                {
+                    con.Close();
+                    return false;
+                }
+
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+                // Console.WriteLine(ex.StackTrace);
+                con.Close();
+                return false;
+            }
+        }
     }
 }
