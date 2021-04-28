@@ -29,5 +29,11 @@ namespace SchoolDbTest
             bool flag = StudentCRUD.DeleteStudent(id);
             return flag;
         }
+        [Test]
+        public void GetAllStudent_Test()
+        {
+            int count = StudentCRUD.GetAllStudent();
+            Assert.AreEqual(1, count);
+        }
     }
 }

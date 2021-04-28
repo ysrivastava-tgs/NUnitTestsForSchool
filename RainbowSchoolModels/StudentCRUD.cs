@@ -8,6 +8,26 @@ namespace RainbowSchoolModels
     public class StudentCRUD
     {
         static SqlConnection con = DatabaseConnection.GetConnection();
+
+        public static int GetAllStudent()
+        {
+            try
+            {
+                SqlCommand get = new SqlCommand("select * from [Student]",con);
+                con.Open();
+                SqlDataReader sdr = get.ExecuteReader();
+                int count = 0;
+                while(sdr.Read())
+                {
+                    count++;
+                }
+                return count;
+            }
+            catch(Exception ex)
+            {
+                return -1;
+            }
+        }
         public static bool AddStudent(StudentDTO obj)
         {
             

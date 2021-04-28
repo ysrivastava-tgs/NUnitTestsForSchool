@@ -13,7 +13,7 @@ namespace RainbowSchoolModels
             
             try
             {
-                SqlCommand insert = new SqlCommand($"insert into [Subject] values(@subjId,@subjName)", con);
+                SqlCommand insert = new SqlCommand("insert into [Subject] values(@subjId,@subjName)", con);
                 insert.Parameters.AddWithValue("@subjId", obj.SubjId);
                 insert.Parameters.AddWithValue("@subjName", obj.SubjName);
                
