@@ -8,6 +8,49 @@ namespace RainbowSchoolModels
     public class SubjectCRUD
     {
         static SqlConnection con = DatabaseConnection.GetConnection();
+        public static int GetAllSubject()
+        {
+            try
+            {
+                SqlCommand get = new SqlCommand("select * from [Subject]", con);
+                con.Open();
+                SqlDataReader sdr = get.ExecuteReader();
+                int count = 0;
+                while (sdr.Read())
+                {
+                    count++;
+                }
+                return count;
+            }
+            catch (Exception ex)
+            {
+                return -1;
+            }
+        }
+        public static SubjectDTO GetSubjectById(string id)
+        {
+            try
+            {
+                SqlCommand get = new SqlCommand("select * from [Subject] where subjId = @subjId", con);
+                get.Parameters.AddWithValue("@subjId", id);
+                con.Open();
+                SqlDataReader r = get.ExecuteReader();
+                SubjectDTO obj = null;
+                while (r.Read())
+                {
+                    obj = new SubjectDTO();
+                    obj.SubjId = r["subjId"].ToString();
+                    obj.SubjName = r["subjName"].ToString();
+                   
+                }
+                return obj;
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+                return null;
+            }
+        }
         public static bool AddSubject(SubjectDTO obj)
         {
             

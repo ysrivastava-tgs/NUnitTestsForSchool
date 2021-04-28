@@ -31,5 +31,17 @@ namespace SchoolDbTest
             bool flag = TeacherCRUD.DeleteTeacher(id);
             return flag;
         }
+        [Test]
+        public void GetAllTeacher_Test()
+        {
+            int count = TeacherCRUD.GetAllTeacher();
+            Assert.AreEqual(1, count);
+        }
+        [Test]
+        public void GetTeacherById_Test()
+        {
+            TeacherDTO obj = TeacherCRUD.GetTeacherById("tbshfg676qe");
+            Assert.IsNotNull(obj);
+        }
     }
 }

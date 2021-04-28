@@ -8,6 +8,50 @@ namespace RainbowSchoolModels
     public class TeacherCRUD
     {
         static SqlConnection con = DatabaseConnection.GetConnection();
+        public static int GetAllTeacher()
+        {
+            try
+            {
+                SqlCommand get = new SqlCommand("select * from [Teacher]", con);
+                con.Open();
+                SqlDataReader sdr = get.ExecuteReader();
+                int count = 0;
+                while (sdr.Read())
+                {
+                    count++;
+                }
+                return count;
+            }
+            catch (Exception ex)
+            {
+                return -1;
+            }
+        }
+        public static TeacherDTO GetTeacherById(string id)
+        {
+            try
+            {
+                SqlCommand get = new SqlCommand("select * from [Teacher] where teachId = @teachId", con);
+                get.Parameters.AddWithValue("@teachId", id);
+                con.Open();
+                SqlDataReader r = get.ExecuteReader();
+                TeacherDTO obj = null;
+                while (r.Read())
+                {
+                    obj = new TeacherDTO();
+                    obj.TeacherId = r["teachId"].ToString();
+                    obj.TeacherName= r["teachName"].ToString();
+                    obj.TeacherBranch = r["teachBranch"].ToString();
+                    
+                }
+                return obj;
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+                return null;
+            }
+        }
         public static bool AddTeacher(TeacherDTO obj)
         {
             

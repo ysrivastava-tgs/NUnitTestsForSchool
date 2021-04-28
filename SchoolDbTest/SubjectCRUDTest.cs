@@ -30,5 +30,17 @@ namespace SchoolDbTest
             bool flag = SubjectCRUD.DeleteSubject(id);
             return flag;
         }
+        [Test]
+        public void GetAllSubject_Test()
+        {
+            int count = SubjectCRUD.GetAllSubject();
+            Assert.AreEqual(1, count);
+        }
+        [Test]
+        public void GetSubjectById_Test()
+        {
+            SubjectDTO obj = SubjectCRUD.GetSubjectById("OOPS_001");
+            Assert.IsNotNull(obj);
+        }
     }
 }

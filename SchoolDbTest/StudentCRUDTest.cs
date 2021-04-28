@@ -35,5 +35,11 @@ namespace SchoolDbTest
             int count = StudentCRUD.GetAllStudent();
             Assert.AreEqual(1, count);
         }
+        [Test]
+        public void GetStudentById_Test()
+        {
+            StudentDTO obj = StudentCRUD.GetStudentById(101);
+            Assert.IsNotNull(obj);
+        }
     }
 }

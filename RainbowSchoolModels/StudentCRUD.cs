@@ -28,6 +28,31 @@ namespace RainbowSchoolModels
                 return -1;
             }
         }
+        public static StudentDTO GetStudentById(int id)
+        {
+            try
+            {
+                SqlCommand get = new SqlCommand("select * from [Student] where studId = @studId", con);
+                get.Parameters.AddWithValue("@studId", id);
+                con.Open();
+                SqlDataReader r = get.ExecuteReader();
+                StudentDTO obj = null;
+                while(r.Read())
+                {
+                    obj = new StudentDTO();
+                    obj.StudId = Convert.ToInt32(r["studId"].ToString());
+                    obj.StudName = r["studName"].ToString();
+                    obj.StudBranch = r["studBranch"].ToString();
+                    obj.StudClass = r["studClass"].ToString();
+                }
+                return obj;
+            }
+            catch(Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+                return null;
+            }
+        }
         public static bool AddStudent(StudentDTO obj)
         {
             
